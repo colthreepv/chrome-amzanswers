@@ -1,33 +1,14 @@
 {
-  "name": "es6-webpack2-starter",
-  "version": "2.0.2",
-  "description": "A template project for es6/7, webpack2, sass and postcss",
+  "name": "chrome-amzanswers",
+  "version": "0.0.1",
+  "description": "Chrome extension to let the user search with free text inside Amazon Answers",
   "scripts": {
     "postinstall": "cp env.example.js env.js",
     "start": "webpack --config webpack/dev.config.js --progress --display-error-details --color --watch",
     "build": "NODE_ENV=production webpack --config webpack/prod.config.js --progress --display-error-details --color",
     "precommit": "eslint src"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/micooz/es6-webpack-starter.git"
-  },
-  "keywords": [
-    "es6",
-    "es7",
-    "webpack2",
-    "starter",
-    "template",
-    "postcss",
-    "sass",
-    "css module"
-  ],
-  "author": "Micooz",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/micooz/es6-webpack-starter/issues"
-  },
-  "homepage": "https://github.com/micooz/es6-webpack-starter#readme",
   "dependencies": {
     "elementx": "^3.1.1"
   },
