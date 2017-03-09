@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+
+  "name": "Amazon Answers Search",
+  "description": "Search with free text inside Amazon Answers",
+  "version": "0.0.2",
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.amazon.it/gp/product/*/*"],
+      "js": ["dist/vendor.js", "dist/app.js"],
+      "css": []
+    }
+  ]
+}
