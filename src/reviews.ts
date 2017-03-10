@@ -8,8 +8,8 @@ function getProductId () {
   return null
 }
 
-function parseResponse (page) {
-  const htmlPage = html()
+function parseResponse (page: string) {
+  const htmlPage: HTMLElement = html()
   htmlPage.innerHTML = page
 
   // question container div is like <div id="question-IDLONGID">

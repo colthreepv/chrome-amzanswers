@@ -5,14 +5,14 @@ module.exports = {
 
   entry: {
     'app': [
-      './src/bootstrap.js',
+      './src/bootstrap.ts',
     ],
-    'vendor': './src/vendor.js',
+    'vendor': './src/vendor.ts',
   },
 
   resolve: {
 
-    extensions: ['.js', '.scss'],
+    extensions: ['.ts', '.js', '.scss'],
 
     modules: ['node_modules'],
 
@@ -21,11 +21,11 @@ module.exports = {
   module: {
 
     rules: [
-
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader'],
+        enforce: 'pre',
+        test: /\.ts$/,
+        exclude: ['node_modules'],
+        loader: ['babel-loader', 'ts-loader'],
       },
 
       {
