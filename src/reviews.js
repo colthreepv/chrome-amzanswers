@@ -62,16 +62,26 @@ function parseAnswers (page) {
 function attachAnswersTo (answerId, answersObj) {
   return function (fetchedAnswers) {
     fetchedAnswers.forEach(answer => answersObj[answerId].push(answer))
+    return fetchedAnswers
   }
+}
+
+function fetchAdditional (answerId, answersObj, pageId = 1) {
+  return fetch(`/ask/answers/inline/${answerId}/${pageId}`)
+    // convert from Blob to text
+    .then(res => res.text())
+    // convert from HTML to an array like [{ question: '', answer: '', from: '', date: '' }]
+    .then(parseAnswers)
+    // fill answersObj with the received answers
+    .then(attachAnswersTo(answerId, answersObj))
+    // check for more
+    .then(answers => answers.thereAreMore && fetchAdditional(answerId, answersObj, pageId + 1))
 }
 
 function fetchAnswers ([answers, missing]) {
   const missingPromises = Promise.all(
     missing.map(
-      id => fetch(`/ask/answers/inline/${id}/1`)
-              .then(res => res.text())
-              .then(parseAnswers)
-              .then(attachAnswersTo(id, answers))
+      id => fetchAdditional(id, answers)
     )
   )
 
